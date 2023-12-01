@@ -1865,22 +1865,25 @@
     <script src="js/main.js"></script>
 
     <script>
-  for (var i = 1; i <= 26; i++) {
-    setupModal("videoModal" + i);
-  }
-
-  function setupModal(modalId) {
-    var videoModal = document.getElementById(modalId);
-
-    videoModal.addEventListener("show.bs.modal", function (event) {
-      var button = event.relatedTarget;
-      var videoSrc = button.getAttribute("data-src");
-      var videoIframe = videoModal.querySelector("#video");
-      videoIframe.src = videoSrc;
-    });
-  }
-</script>
-
+      for (var i = 1; i <= 26; i++) {
+        setupModal("videoModal" + i);
+      }
+    
+      function setupModal(modalId) {
+        var videoModal = document.getElementById(modalId);
+    
+        videoModal.addEventListener("show.bs.modal", function (event) {
+          var button = event.relatedTarget;
+          var videoSrc = button.getAttribute("data-src");
+          var videoIframe = videoModal.querySelector("#video");
+          videoIframe.src = videoSrc;
+        });
+    
+        videoModal.addEventListener("hide.bs.modal", function () {
+          var videoIframe = videoModal.querySelector("#video");
+          videoIframe.src = "";
+        });
+      }
     </script>
   </body>
 </html>
