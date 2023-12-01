@@ -1877,7 +1877,11 @@
       var videoSrc = button.getAttribute("data-src");
       var videoIframe = videoModal.querySelector("#video");
       videoIframe.src = videoSrc;
+      
     });
+    videoModal.addEventListener("hide.bs.modal", function (event) {
+      var videoIframe = videoModal.querySelector("#video");
+      videoIframe.src = "";    });
   }
 </script>
 
